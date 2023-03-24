@@ -28,7 +28,7 @@ function App() {
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
   const [guesses, setGuesses] = useState(3);
-  const [score, setScore] = useState();
+  const [score, setScore] = useState(-200);
 
   console.log(words);
 
@@ -51,6 +51,7 @@ function App() {
   const startGame = useCallback(() => {
     // clear all letters
     clearLettersStates();
+    
 
     // choose a word
     const { category, word } = pickWordAndCategory();
@@ -133,11 +134,12 @@ function App() {
     // win condition
     if (guessedLetters.length === uniqueLetters.length) {
       // add score
-      setScore((actualScore=0) => (actualScore += 100));
+      setScore((actualScore) => actualScore + 100);
+
       // restart game with new word
       startGame();
     }
-  }, [guessedLetters, letters, startGame,score]);
+  }, [guessedLetters, letters, startGame]);
 
   return (
     <div className="App">

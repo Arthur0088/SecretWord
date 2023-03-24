@@ -24,13 +24,13 @@ const Game = ({ verifyLetter,
   return (
     <div className='game'>
       <p className='points'>
-        <span>Pontuação: {score}</span>
+        <span>Pontuação</span>: {score}
       </p>
       <h1>Advinhe a palavra</h1>
       <h3 className='tip'>
         Dica sobre a palavra: <span>{pickedCategory}</span>
       </h3>
-      <p>Voce ainda tem {guesses} tentativas</p>
+      <p>Você ainda tem {guesses} tentativas</p>
       <div className='wordContainer'>
         {letters.map((letter, i) => (
           guessedLetters.includes(letter) ? (
@@ -56,6 +56,7 @@ const Game = ({ verifyLetter,
         </form>
       </div>
       <div className='wrongLettersContainer'>
+        <p>Letras já utilizadas</p>
         {wrongLetters.map((letter, i) => (
           <span key={i}>{letter}, </span>
         ))}
